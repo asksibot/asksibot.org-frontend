@@ -1,0 +1,30 @@
+1 Privacy statement
+A1 Email (Optional)	B1 Privacy Statement	C1Your privacy is important to us. All data collected is for internal review only and will not be shared.
+2 Section 1
+A1 Question B1 5	C1 4 	D1 3	E 2	F 1	G 0	H Comments/Recommendations
+A2 1.   How engaging did you find Asksibot's design and interface? (0-5 Scale)				
+A3 2. How accessible did you find Asksibot's features? (0-5 Scale) 					
+A4 3. To what extent did Asksibot make you interested in returning to use it again? (0-5 Scale) 		
+A5 4. How effectively does Asksibot engage you? (0-5 Scale)						
+A6 5. To what extent does Asksibot's design and navigation encourage you to explore further? (0-5 Scale) 							
+3 Section 2
+A1 Question B1 5	C1 4 	D1 3	E 2	F 1	G 0	H Comments/Recommendations
+A2 6. How effectively does Asksibot leverage technology to solve real-world problems? (0-5 Scale)
+A3 7. How well does the content from Asksibot help you to express what you want to communicate? (0-5 Scale) 									
+A4 8. How well does Asksibot provide resources and information for investigating real-world problems? (0-5 Scale) 							
+A5 9. Rate Asksibot's effectiveness in offering a variety and relevance of content. (0-5 Scale)	
+A6 10. How well does Asksibot respond to your feedback, questions, and concerns? (0-5 Scale) 	
+A7 11. How satisfied are you with the quality and accuracy of the content from Asksibot? (0-5 Scale)
+A8 12. How well does Asksibot understand your needs and preferences? (0-5 Scale) 																
+4 Section 3
+A1 Question B1 5	C1 4 	D1 3	E 2	F 1	G 0	H Comments/Recommendations
+A2 13. How well does Asksibot facilitate collaboration and communication among users? (0-5 Scale) 
+A3 14. How well does Asksibot support and enhance your creativity and productivity? (0-5 Scale) 	
+A4 15. How well does Asksibot help you to achieve your goals and objectives? (0-5 Scale) 		
+A5 16. How well does Asksibot provide feedback and guidance to improve your performance and learning? (0-5 Scale)					
+5 Section 4
+A1 Question B1 5	C1 4 	D1 3	E 2	F 1	G 0	H Comments/Recommendations
+A2 17. How well does Asksibot help you to evaluate the quality and reliability of the content you produce or consume? (0-5 Scale) 											
+A3 18. How well does Asksibot help you to reflect on your own and others' work and learning? (0-5 Scale) 
+A4 19. How well does Asksibot help you to identify and address your strengths and weaknesses? (0-5 Scale) 		
+A5 20. How well does Asksibot help you to monitor and improve your progress and performance? (0-5 Scale) 						
