@@ -33,8 +33,9 @@
             text-align: left;
             border: 1px solid #ccc;
             padding: 10px;
-            height: 300px; /* Set a fixed height for the chat area */
-            overflow-y: auto; /* Enable vertical scrolling */
+            min-height: 100px; /* Initial minimal height for the chat area */
+            max-height: 300px; /* Maximum height before scrolling */
+            overflow-y: auto; /* Enable vertical scrolling when necessary */
         }
         .user-message {
             background-color: #f0f0f0;
