@@ -18,17 +18,18 @@
             width: 50%;
             margin-top: 20px;
         }
-        .feedback-instructions {
-            font-size: 0.9rem;
-            text-align: center;
-            margin-top: 20px;
+        /* New style for .small-text goes here */
+        .small-text {
+            font-size: 0.8em; /* Makes the text smaller */
         }
+        /* Continue with other styles after this */
         .chat-area {
             margin-top: 20px;
             text-align: left;
             border: 1px solid #ccc;
             padding: 10px;
-            height: 300px;
+            min-height: 100px;
+            max-height: 300px;
             overflow-y: auto;
         }
         .user-message, .bot-message {
@@ -49,11 +50,26 @@
             padding: 10px;
         }
         .input-container button {
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Default margin */
+}
+
+@media (max-width: 600px) {
+    .input-container button {
+        margin-left: 5px; /* Smaller margin for small devices */
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+        .message-anim {
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
@@ -66,17 +82,18 @@
     </div>
     <div class="chat-area" id="chatArea"></div>
     <div class="input-container">
-        <input type="text" id="userMessageInput" placeholder="Message Asksibot...">
+        <input type="text" id="userMessageInput" placeholder="Ask Asksibot a question..." autocomplete="off">
         <button id="sendMessageButton">Send</button>
     </div>
     <div class="footer">
-        <p>An Occupational Therapy ChatGPT specializing in neurodiversity and sensory challenges.<br>ChatGPTs can make mistakes. Consider checking important information.</p>
+        <p>An Occupational Therapy ChatGPT specializing in neurodiversity and sensory challenges.<br>
+        <span class="small-text">ChatGPTs can make mistakes. Consider checking important information.</span></p>
     </div>
     <button id="showFeedbackForm" style="margin-top: 20px;">Feedback</button>
 </div>
 <script>
     document.getElementById('showFeedbackForm').addEventListener('click', function() {
-        window.location.href = '/submit-feedback'; // Correctly redirect to the Flask route serving the feedback form
+        window.location.href = 'feedback_form.html';
     });
 
     document.getElementById('sendMessageButton').addEventListener('click', async function() {
@@ -84,26 +101,44 @@
         if (!userMessage.trim()) return;
         appendMessage('You', userMessage, 'user-message');
 
-        const response = await fetch('/chatbot', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({message: userMessage})
-        });
+        try {
+            const response = await fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
 
-        if (response.ok) {
-            const data = await response.json();
-            appendMessage('Bot', data.bot_response, 'bot-message');
-        } else {
-            console.error('Error:', response.statusText);
+            if (response.ok) {
+                const data = await response.json();
+                const botResponse = data.bot_response;
+                appendMessage('Bot', botResponse, 'bot-message');
+            } else {
+                console.error('Error:', response.statusText);
+                // Optionally, display an error message to the user
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            // Optionally, display an error message to the user
         }
+
+        // Clear the input field
         document.getElementById('userMessageInput').value = '';
+    });
+
+    document.getElementById('userMessageInput').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            document.getElementById('sendMessageButton').click();
+        }
     });
 
     function appendMessage(sender, message, className) {
         const chatArea = document.getElementById('chatArea');
         const messageElement = document.createElement('div');
         messageElement.textContent = `${sender}: ${message}`;
-        messageElement.classList.add(className);
+        messageElement.classList.add(className, 'message-anim');
         chatArea.appendChild(messageElement);
         chatArea.scrollTop = chatArea.scrollHeight;
     }
